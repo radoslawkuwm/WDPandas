@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 
 # a = np.array([1, 2, 3],dtype='float64')
 # print(a)
@@ -78,23 +79,108 @@ import numpy as np
 # cols = np.array([[0,2],[0,2]])
 # b = a[rows,cols]
 # print(b)
+# #
+#
+# # zad1
+# a = np.arange(3,46,3)
+# print(a)
+#
+# #zad2
+# b = np.array([1.25,3.74,6.23,67.32])
+# c = b.astype('int64')
+# print(c)
+#
+# #zad3
+# def zad3(n):
+#     return np.arange(n*n).reshape([n,n])
+#
+# print(zad3(5))
+#
+# #zad4
+# print(np.logspace(1,6))
+#
 #
 
-# zad1
-a = np.arange(3,46,3)
-print(a)
+# a = np.array([20,30,40,50])
+# b = np.arange(4)
+# c=a+b
+#
+# print(c)
+# d = np.sqrt(b)
+#
+# print(d)
+#
+# e = d + c;
+#
+# print(e)
 
-#zad2
-b = np.array([1.25,3.74,6.23,67.32])
-c = b.astype('int64')
-print(c)
+# a = np.arange(16).reshape(4,4)
+# print(a.sum())
+# print(a.sum(axis=0))
+# print(a.sum(axis=1))
+# print(a.cumsum(axis=1))
 
-#zad3
-def zad3(n):
-    return np.arange(n*n).reshape([n,n])
+# a = np.arange(3)
+# b = np.arange(3)
+# c = np.dot(a,b)
+# print(c)
+# print(a.dot(b))
+#
+# d = np.arange(3)
+# e = np.array([[0],[1],[2]])
+# print(d.dot(e))
+#
+# f = np.array([[2,4,5],[5,1,7]])
+# g = np.array([[2,3],[4,2],[6,1]])
+# print(np.dot(f,g))
 
-print(zad3(5))
+# a = np.arange(6).reshape((3,2))
+# print(a)
+#
+# for b in a:
+#     for c in b:
+#         print(c)
+#
+#
+# a = np.arange(12).reshape((3,4))
+# print(a)
+#
+# b = a.reshape((4,3))
+# print(b)
+#
+# c = b.ravel()
+# print(c)
+#
+# print(b.T)
+#
 
-#zad4
-print(np.logspace(1,6))
+s = pd.Series([1,3,5,'a',5.5])
+print(s)
 
+g = pd.Series([10,12,14,15],index=['a','b','c','d'])
+print(g)
+
+data = {'Kraj':['Belgia','Indie','Brazylia'],
+        'Stolica':['Bruksela','New Dheli','Brasilia'],
+        'Populacja':[1023893,3948383,5838923]
+        }
+df = pd.DataFrame(data)
+print(df)
+
+# daty = pd.date_range('20220507',periods=5)
+# print(daty)
+#
+# df2 = pd.DataFrame(np.random.rand(5,4),index=daty,columns=list('ABCD'))
+# print(df2)
+#
+# df3 = pd.read_csv('dane.csv',header=0,sep=';',decimal='.')
+# print(df3)
+#
+# xlsx = pd.ExcelFile('datasets/imiona.xlsx')
+# df4 = pd.read_excel(xlsx,header=0)
+# print(df4)
+# print(df4.head(10))
+# print(df4.tail(10))
+#
+# df3.to_csv('dane2.csv',index=False)
+# df4.to_excel('imiona2.xlsx',sheet_name='dane')
