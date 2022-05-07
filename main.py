@@ -153,13 +153,13 @@ import pandas as pd
 #
 # print(b.T)
 #
-
-s = pd.Series([1,3,5,'a',5.5])
-print(s)
+#
+# s = pd.Series([1,3,5,'a',5.5])
+# print(s)
 
 g = pd.Series([10,12,14,15],index=['a','b','c','d'])
 print(g)
-
+#
 data = {'Kraj':['Belgia','Indie','Brazylia'],
         'Stolica':['Bruksela','New Dheli','Brasilia'],
         'Populacja':[1023893,3948383,5838923]
@@ -184,3 +184,12 @@ print(df)
 #
 # df3.to_csv('dane2.csv',index=False)
 # df4.to_excel('imiona2.xlsx',sheet_name='dane')
+
+print(g['a'])
+print(g.a)
+print(df[0:1])
+print(df['Kraj'])
+print(df.Kraj)
+print(df.iloc[[0],[0]])
+print(df.loc[[0],['Kraj']])
+print(df.at[0,'Kraj'])
