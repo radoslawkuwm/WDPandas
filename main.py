@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # a = np.array([1, 2, 3],dtype='float64')
 # print(a)
@@ -157,39 +158,99 @@ import pandas as pd
 # s = pd.Series([1,3,5,'a',5.5])
 # print(s)
 
-g = pd.Series([10,12,14,15],index=['a','b','c','d'])
-print(g)
-#
-data = {'Kraj':['Belgia','Indie','Brazylia'],
-        'Stolica':['Bruksela','New Dheli','Brasilia'],
-        'Populacja':[1023893,3948383,5838923]
-        }
-df = pd.DataFrame(data)
-print(df)
+# s = pd.Series([10, 12, 14, 15], index=['a', 'b', 'c', 'd'])
+# print(s)
+# print(s['a']) #10
+# print(s.b,'\n')#12
+# print(s[s>12],'\n')
+# print(s.where(s>12,'wartosc mniejsza niz zalozenie(12)'))
+# seria = s.copy()
+# seria.where(seria>12,'warunek nie spelniony',inplace=True)
+# print(seria)
+# print(s[(s>10) & (s<15)])
+# s['e'] = 17
+# print(s)
 
+
+
+# data = {'Kraj': ['Belgia', 'Indie', 'Brazylia'],
+#         'Stolica': ['Bruksela', 'New Dheli', 'Brasilia'],
+#         'Populacja': [48675467, 239483833, 58675467]
+#         }
+# df = pd.DataFrame(data)
+# print(df.Kraj,'\n')
+# print(df[df['Populacja']>3000000])
+# df.loc[3] = 'nowy element'
+# df.loc[4] = ['Polska','Warszawa',38675467]
+#
+# print(df)
+#
+# df.drop([3],inplace=True)
+# print(df)
+#
+# df['Kontynent'] = ['Europa','Azja','Ameryka Poludniowa','Europa']
+# print(df)
+#
+# df.sort_values('Kraj',inplace=True)
+# print(df)
+
+# grupa = df.groupby('Kontynent').agg({'Populacja':'sum'})
+# print(grupa.get_group('Europa'))
+
+# grupa.plot(kind='bar',xlabel ='Kontynent',ylabel='Populacja',title='Populacja na kontynent',rot=0)
+
+# wykres = grupa.plot.bar()
+# wykres.set_xlabel = 'Kontynenty'
+# wykres.set_ylabel = 'Populacja w mld'
+# wykres.tick_params(axis='x',labelrotation=0)
+# wykres.set_title('Populacja na kontynent')
+# plt.show()
+
+# print(df.groupby('Kontynent').agg({'Populacja'})) #fix
+
+#print(df.iloc([[0], [0]]))
+# df = pd.DataFrame(data)
+# print(df)
+#
 # daty = pd.date_range('20220507',periods=5)
 # print(daty)
 #
 # df2 = pd.DataFrame(np.random.rand(5,4),index=daty,columns=list('ABCD'))
 # print(df2)
 #
-# df3 = pd.read_csv('dane.csv',header=0,sep=';',decimal='.')
-# print(df3)
+df3 = pd.read_csv('dane.csv',header=0,sep=';',decimal='.') #wczytanie pliku csv
+# print(df3.sample(10,replace=True),'\n') # 10 losowych, replace = True bo ilosc danyc w ramce <10
 #
-# xlsx = pd.ExcelFile('datasets/imiona.xlsx')
-# df4 = pd.read_excel(xlsx,header=0)
+xlsx = pd.ExcelFile('datasets/imiona.xlsx') #otworzenie pliku xlsx
+df4 = pd.read_excel(xlsx, header=0) #wczytanie pliku xlsx
 # print(df4)
-# print(df4.head(10))
-# print(df4.tail(10))
-#
-# df3.to_csv('dane2.csv',index=False)
-# df4.to_excel('imiona2.xlsx',sheet_name='dane')
 
-print(g['a'])
-print(g.a)
-print(df[0:1])
-print(df['Kraj'])
-print(df.Kraj)
-print(df.iloc[[0],[0]])
-print(df.loc[[0],['Kraj']])
-print(df.at[0,'Kraj'])
+
+# print(df4.head(10),'\n') # pierwsze 10
+# print(df4.tail(10),'\n') # ostatnie 10
+
+# print(df4.sample(10),'\n') # losowy wiersz
+
+# df3.to_csv('dane2.csv',index=False) #zapis do csv
+# df4.to_excel('imiona2.xlsx',sheet_name='dane') #zapis do xlsx
+#
+
+# print(df[0:1]) #wypianie wiersza 0 do 1 (bez 1)
+# print(df['Kraj']) #wartosci w kolumnie z headerem 'Kraj'
+# print(df.Kraj) #jw
+# print(df.iloc[[0],[0]])
+# print(df.loc[[0],['Kraj']])
+# print(df.at[0,'Kraj'])
+
+# grupa = df3.groupby('Imię i nazwisko').agg({'Wartość zamówienia':['sum']})
+# print(grupa)
+# grupa.plot(kind='pie',subplots=True,autopct='%.2f%%',fontsize=20,colors=['red','green'],figsize=(8,6))
+# plt.legend(loc='upper left')
+# plt.savefig('plot.png')
+# plt.show
+
+seria = pd.Series(np.random.randn(1000))
+seria = seria.cumsum()
+
+seria.plot()
+plt.show()
