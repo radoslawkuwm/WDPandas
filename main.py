@@ -1,6 +1,9 @@
+import math
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from PIL import Image
 
 # a = np.array([1, 2, 3],dtype='float64')
 # print(a)
@@ -217,13 +220,13 @@ import matplotlib.pyplot as plt
 #
 # df2 = pd.DataFrame(np.random.rand(5,4),index=daty,columns=list('ABCD'))
 # print(df2)
-#
-df3 = pd.read_csv('dane.csv',header=0,sep=';',decimal='.') #wczytanie pliku csv
-# print(df3.sample(10,replace=True),'\n') # 10 losowych, replace = True bo ilosc danyc w ramce <10
-#
-xlsx = pd.ExcelFile('datasets/imiona.xlsx') #otworzenie pliku xlsx
-df4 = pd.read_excel(xlsx, header=0) #wczytanie pliku xlsx
-# print(df4)
+# #
+# df3 = pd.read_csv('dane.csv',header=0,sep=';',decimal='.') #wczytanie pliku csv
+# # print(df3.sample(10,replace=True),'\n') # 10 losowych, replace = True bo ilosc danyc w ramce <10
+# #
+# xlsx = pd.ExcelFile('datasets/imiona.xlsx') #otworzenie pliku xlsx
+# df4 = pd.read_excel(xlsx, header=0) #wczytanie pliku xlsx
+# # print(df4)
 
 
 # print(df4.head(10),'\n') # pierwsze 10
@@ -249,8 +252,140 @@ df4 = pd.read_excel(xlsx, header=0) #wczytanie pliku xlsx
 # plt.savefig('plot.png')
 # plt.show
 
-seria = pd.Series(np.random.randn(1000))
-seria = seria.cumsum()
+# seria = pd.Series(np.random.randn(1000))
+# seria = seria.cumsum()
+#
+# seria.plot()
+# plt.show()
 
-seria.plot()
+# plt.plot([1,2,3,4],[1,4,9,16],'ro:',label='linia')
+# plt.ylabel('wartpsco z wektora')
+# plt.show()
+#
+# plt.plot([1,2,3,4], [1,4,9,16],'r:')
+# plt.plot([1,2,3,4], [1,4,9,16],'bo')
+#
+# # plt.axis([0,6,0,20])
+# plt.show()
+
+# t = np.arange(0,5,0.1)
+#
+# plt.plot(t, t, 'r-', t, t**2,'b:',t,t**3,'g^')
+# plt.legend(labels=['liniowa','kwadratowa','szescienna'], loc='center')
+# plt.show()
+
+# x = np.linspace(0,2,100)
+#
+# plt.plot(x,x,label='liniowa')
+# plt.plot(x,x**2,label = 'kwadrtatowa')
+# plt.plot(x,x**3, label= "szescienna")
+# plt.xlabel('etykieta x')
+# plt.ylabel('etykieta y')
+# plt.title('wykres trzech linii')
+# plt.savefig('plot.png')
+# im1 = Image.open('plot.png')
+# im1 = im1.convert('RGB')
+# im1.save('plot.jpg')
+
+# x = np.linspace(1,20,100)
+# print(x)
+# plt.plot(x,1/x,'bo-', label='funkcja')
+# plt.ylabel('etykieta y')
+# plt.xlabel('etykieta x')
+# plt.legend(loc = 'best')
+# plt.show()
+
+# x = np.arange(0,10,0.1)
+# plt.plot(x,np.sin(x),'ro:',label='sinus')
+# plt.xlabel('wartosc x')
+# plt.ylabel('sinus')
+# plt.show()
+
+#siatka
+#
+# x1 = np.arange(0,2,0.02)
+# x2 = np.arange(0,2,0.02)
+#
+# y1 = np.sin(2 * np.pi * x1)
+# y2 = np.cos(2 * np.pi * x2)
+#
+# # plt.subplot(2,1,1)
+# # plt.plot(x1,y1)
+# # plt.ylabel('sinus(x)')
+# # plt.title('wykres sin(x)')
+# #
+# # plt.subplot(2,1,2)
+# # plt.plot(x2,y2,'r-')
+# # plt.ylabel('cosinus(x)')
+# # plt.xlabel('x')
+# #
+# # plt.subplots_adjust(hspace=0.5)
+# # plt.show()
+#
+# fig, axs = plt.subplots(3,2)
+# # print(type(fig))
+# # print(type(axs))
+#
+# axs[0,0].plot(x1,y1, 'g-')
+# axs[0,0].set_xlabel('x')
+# axs[0,0].set_ylabel('sin(x)')
+# axs[0,0].set_title('Wykres sin(x)')
+#
+# axs[1,1].plot(x2,y2,'r-')
+# axs[1,1].set_xlabel('x')
+# axs[1,1].set_ylabel('cos(x)')
+# axs[1,1].set_title('wykres cos(x)')
+#
+#
+# axs[2,0].plot(x2,y2,'b:')
+# axs[2,0].set_xlabel('x')
+# axs[2,0].set_ylabel('cos(x)')
+# axs[2,0].set_title('wykres cos(x)')
+#
+# fig.delaxes(axs[0,1])
+# fig.delaxes(axs[1,0])
+# fig.delaxes(axs[2,1])
+#
+# plt.subplots_adjust(hspace=0.5,wspace=0.25)
+# plt.show()
+
+# data = {
+#         'a':np.arange(50),
+#         'c':np.random.randint(0,51,50),
+#         'd':np.random.randn(50)
+#         }
+# data['b'] = data['a'] + 10 * np.random.randn(50)
+# data['d'] = np.abs(data['d']) * 100
+#
+# plt.scatter(data=data, x='a',y='b',c='c',cmap='Accent',s='d')
+# plt.xlabel('wartosci z klucza a')
+# plt.ylabel('wartosci z klucza b')
+# plt.show()
+
+# data = {'Kraj': ['Belgia', 'Indie', 'Brazylia'],
+#         'Stolica': ['Bruksela', 'New Dheli', 'Brasilia'],
+#         'Populacja': [48675467, 1099483833, 258675467]
+#         }
+# df = pd.DataFrame(data)
+# df.loc[3] = ['Polska','Warszawa',38675467]
+#
+# df['Kontynent'] = ['Europa','Azja','Ameryka Poludniowa','Europa']
+#
+# grupa = df.groupby('Kontynent')
+# etykiety = list(grupa.groups.keys())
+# wartosci = list(grupa.agg('Populacja').sum())
+#
+# print(etykiety)
+# print(wartosci)
+#
+# plt.bar(x=etykiety,height=wartosci, color=['red','green','blue'])
+# plt.xlabel('Kontynent')
+# plt.ylabel('Populacja na kontynentach')
+# plt.show()
+
+x = np.random.randn(10000)
+plt.hist(x,bins=50, facecolor='g',alpha=0.75,density=True)
+plt.xlabel('wartosci')
+plt.ylabel('Prawdopodobienstwo')
+plt.title('Histogram')
 plt.show()
