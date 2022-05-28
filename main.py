@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from PIL import Image
+import seaborn as sns
 
 # a = np.array([1, 2, 3],dtype='float64')
 # print(a)
@@ -383,9 +384,43 @@ from PIL import Image
 # plt.ylabel('Populacja na kontynentach')
 # plt.show()
 
-x = np.random.randn(10000)
-plt.hist(x,bins=50, facecolor='g',alpha=0.75,density=True)
-plt.xlabel('wartosci')
-plt.ylabel('Prawdopodobienstwo')
-plt.title('Histogram')
+# x = np.random.randn(10000)
+# plt.hist(x,bins=50, facecolor='g',alpha=0.75,density=True)
+# plt.xlabel('wartosci')
+# plt.ylabel('Prawdopodobienstwo')
+# plt.title('Histogram')
+# plt.show()
+
+# sns.set(rc={'figure.figsize':(8,8)})
+# sns.lineplot(x=[1,2,3,4],y=[1,4,9,16],
+#              label='linia nr1',color='red',marker='o',linestyle=':')
+# sns.lineplot(x=[1,2,3,4],y=[2,5,10,17],
+#              label='linia nr 2', color='green',marker='^',linestyle=':')
+#
+# plt.xlabel('os x')
+# plt.ylabel('os y')
+# plt.title('wykres liniowy')
+# plt.show()
+
+# s = pd.Series(np.random.randn(1000))
+# s = s.cumsum()
+# sns.set()
+# wykres = sns.relplot(kind='line', data=s, label='linia')
+# wykres.fig.set_size_inches(8,6)
+# wykres.fig.suptitle('wykres liniowy losowych danych')
+# wykres.set_xlabels('indeksy')
+# wykres.set_ylabels('wartosci')
+# wykres.add_legend()
+# wykres.figure.subplots_adjust(left=0.1,right=0.9,bottom=0.1,top=0.9)
+# plt.show()
+
+# tab1 = np.arange(1,20.75,0.75)
+# tab2 = np.linspace(1,20,75)
+# print(tab1)
+# print(tab2)
+
+sns.set()
+df=pd.read_csv('iris.data',header=0,sep=',',decimal='.')
+wykres = sns.lineplot(data=df,x=df.index,y='sepal length',hue='class')
+wykres.legend(title='Rodzaj kwiatu')
 plt.show()
