@@ -1,5 +1,3 @@
-import math
-
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -177,17 +175,21 @@ import seaborn as sns
 
 
 
-# data = {'Kraj': ['Belgia', 'Indie', 'Brazylia'],
-#         'Stolica': ['Bruksela', 'New Dheli', 'Brasilia'],
-#         'Populacja': [48675467, 239483833, 58675467]
-#         }
-# df = pd.DataFrame(data)
-# print(df.Kraj,'\n')
-# print(df[df['Populacja']>3000000])
-# df.loc[3] = 'nowy element'
-# df.loc[4] = ['Polska','Warszawa',38675467]
-#
-# print(df)
+data = {'Kraj': ['Belgia', 'Indie', 'Brazylia'],
+        'Stolica': ['Bruksela', 'New Dheli', 'Brasilia'],
+        'Populacja': [48675467, 239483833, 58675467]
+        }
+df = pd.DataFrame(data)
+df.loc[3] = ['Polska','Warszawa',38675467]
+
+print()
+
+grupa = df.groupby('Kraj')
+print(grupa.groups.keys())
+plt.bar(x=grupa.groups.keys(),height=list(grupa.agg('Populacja').sum()),color=['red','green','yellow','blue'])
+plt.bar(x=grupa.groups.keys(),height=list([4867546,4867547,4867567,4865467]),color=['black','black','black','black'])
+plt.ylabel('MLN Ludzi')
+plt.show()
 #
 # df.drop([3],inplace=True)
 # print(df)
@@ -198,11 +200,8 @@ import seaborn as sns
 # df.sort_values('Kraj',inplace=True)
 # print(df)
 
-# grupa = df.groupby('Kontynent').agg({'Populacja':'sum'})
-# print(grupa.get_group('Europa'))
-
-# grupa.plot(kind='bar',xlabel ='Kontynent',ylabel='Populacja',title='Populacja na kontynent',rot=0)
-
+# grupa = df.groupby('Kraj').agg({'Populacja':'sum'})
+#
 # wykres = grupa.plot.bar()
 # wykres.set_xlabel = 'Kontynenty'
 # wykres.set_ylabel = 'Populacja w mld'
@@ -419,8 +418,8 @@ import seaborn as sns
 # print(tab1)
 # print(tab2)
 
-sns.set()
-df=pd.read_csv('iris.data',header=0,sep=',',decimal='.')
-wykres = sns.lineplot(data=df,x=df.index,y='sepal length',hue='class')
-wykres.legend(title='Rodzaj kwiatu')
-plt.show()
+# sns.set()
+# df=pd.read_csv('iris.data',header=0,sep=',',decimal='.')
+# wykres = sns.lineplot(data=df,x=df.index,y='sepal length',hue='class')
+# wykres.legend(title='Rodzaj kwiatu')
+# plt.show()
